@@ -200,11 +200,14 @@ export default function TeamWorkspace() {
       setError("");
       setSuccess("");
 
-      await axios.post(
-        `http://localhost:4000/api/workspaces/${workspaceId}/members`,
-        { email },
-        { headers: authHeaders }
-      );
+     await api.post(
+      "/workspaces",
+      {
+        name: workspaceName.trim(),
+        description: description.trim(),
+      },
+      { headers: authHeaders }
+    );
 
       setMemberEmails((previous) => ({
         ...previous,
@@ -242,15 +245,14 @@ export default function TeamWorkspace() {
       setError("");
       setSuccess("");
 
-      await axios.post(
-        "http://localhost:4000/api/meetings",
+        await api.post(
+        "/meetings",
         {
           title,
           workspaceId,
         },
         { headers: authHeaders }
       );
-
       setMeetingTitles((previous) => ({
         ...previous,
         [workspaceId]: "",
