@@ -64,7 +64,7 @@ AI Integration
 
 Project Structure
 
-`IntellMeet/
+```IntellMeet/
 ├── public/
 ├── src/
 │   ├── api/
@@ -83,7 +83,7 @@ Project Structure
 │   ├── services/
 │   └── server.js
 ├── package.json
-└── README.md`
+└── README.md```
 
 Installation and Setup
 
