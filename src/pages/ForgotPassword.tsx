@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./Auth.css";
+import api from "../api/axios";
 
 type ResetStep = "email" | "otp" | "password";
 
@@ -26,10 +27,10 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/auth/forgot-password",
-        { email: email.trim() }
-      );
+     const response = await api.post(
+      "/auth/forgot-password",
+      { email: email.trim() }
+    );
 
       setMessage(response.data.message);
       setStep("otp");
@@ -55,8 +56,8 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/auth/verify-reset-otp",
+      const response = await api.post(
+        "/auth/verify-reset-otp",
         {
           email: email.trim(),
           otp,
@@ -99,8 +100,8 @@ function ForgotPassword() {
     setLoading(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:4000/api/auth/reset-password",
+      const response = await api.post(
+        "/auth/reset-password",
         {
           resetToken,
           newPassword,

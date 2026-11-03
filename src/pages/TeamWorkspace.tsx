@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import api from "../api/axios";
 import { useNavigate} from "react-router-dom";
 import {
   Users,
@@ -66,10 +67,10 @@ export default function TeamWorkspace() {
 
   const loadWorkspaceMeetings = async (workspaceId: string) => {
     try {
-      const response = await axios.get(
-        `http://localhost:4000/api/meetings/workspace/${workspaceId}`,
-        { headers: authHeaders }
-      );
+     const response = await api.get(
+      `/meetings/workspace/${workspaceId}`,
+      { headers: authHeaders }
+    );
 
       setWorkspaceMeetings((previous) => ({
         ...previous,
@@ -83,8 +84,8 @@ export default function TeamWorkspace() {
   // Refresh workspaces after creating a workspace or adding a member
   const loadWorkspaces = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:4000/api/workspaces",
+     const response = await api.get(
+        "/workspaces",
         { headers: authHeaders }
       );
 
@@ -114,11 +115,10 @@ export default function TeamWorkspace() {
           Authorization: `Bearer ${token}`,
         };
 
-        const response = await axios.get(
-          "http://localhost:4000/api/workspaces",
+       const response = await api.get(
+          "/workspaces",
           { headers }
         );
-
         const fetchedWorkspaces: Workspace[] =
           response.data.workspaces || [];
 
@@ -127,11 +127,10 @@ export default function TeamWorkspace() {
         await Promise.all(
           fetchedWorkspaces.map(async (workspace) => {
             try {
-              const meetingResponse = await axios.get(
-                `http://localhost:4000/api/meetings/workspace/${workspace._id}`,
+              const meetingResponse = await api.get(
+                `/meetings/workspace/${workspace._id}`,
                 { headers }
               );
-
               setWorkspaceMeetings((previous) => ({
                 ...previous,
                 [workspace._id]: meetingResponse.data.meetings || [],
@@ -164,8 +163,8 @@ export default function TeamWorkspace() {
       setError("");
       setSuccess("");
 
-      await axios.post(
-        "http://localhost:4000/api/workspaces",
+     await api.post(
+        "/workspaces",
         {
           name: workspaceName.trim(),
           description: description.trim(),
