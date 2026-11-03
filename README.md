@@ -1,75 +1,149 @@
-# React + TypeScript + Vite
+IntellMeet – AI-Powered Meeting & Collaboration Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+IntellMeet is a full-stack meeting and collaboration platform designed to make remote teamwork easier. It combines real-time video conferencing, messaging, screen sharing, and AI-powered meeting insights in one place.
 
-Currently, two official plugins are available:
+Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Authentication
 
-## React Compiler
+- User registration and login.
+- Secure password hashing and JWT authentication.
+- Forgot password with email OTP verification.
+- Protected routes.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Video Conferencing
 
-## Expanding the ESLint configuration
+- Create and join meetings.
+- Real-time video and audio communication using WebRTC.
+- Live meeting chat using Socket.IO.
+- Screen sharing.
+- Host-controlled meeting termination.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+AI-Powered Meeting Assistance
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Live meeting transcription using browser speech recognition.
+- AI-generated meeting summaries.
+- Key discussion points and decisions.
+- Automatically generated action items.
+- Meeting transcripts and summaries stored in MongoDB.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Team Workspace
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Create team workspaces.
+- Add registered users using their email addresses.
+- Create and manage workspace meetings.
+- Access shared workspace information.
 
-```
+Tech Stack
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Frontend
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- React
+- TypeScript
+- Vite
+- CSS
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Backend
 
-```
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT
+- Socket.IO
+
+Real-Time Communication
+
+- WebRTC
+- Socket.IO
+
+AI Integration
+
+- Google Gemini API
+- Browser Speech Recognition API
+
+Project Structure
+
+IntellMeet/
+├── public/
+├── src/
+│   ├── api/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── Dashboard.tsx
+│   ├── App.tsx
+│   └── main.tsx
+├── server/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   └── server.js
+├── package.json
+└── README.md
+
+Installation and Setup
+
+Prerequisites
+
+- Node.js
+- MongoDB
+- Git
+- API credentials for the required integrations
+
+1. Clone the repository
+
+git clone https://github.com/Ananthu-R-S/IntellMeet.git
+cd IntellMeet
+
+2. Install frontend dependencies
+
+npm install
+
+3. Install backend dependencies
+
+cd server
+npm install
+
+4. Configure environment variables
+
+Create the required ".env" files for the frontend and backend.
+
+Configure your MongoDB connection, JWT secret, email credentials, Gemini API key, and other required settings.
+
+Never upload actual credentials or ".env" files to GitHub.
+
+5. Run the application
+
+Start the backend using the development command configured in "server/package.json".
+
+Start the frontend from the project root:
+
+npm run dev
+
+Open the local URL displayed by Vite in your browser.
+
+Security
+
+- Passwords are hashed before storage.
+- Authentication uses JWT.
+- Password reset OTPs are securely hashed and expire.
+- Environment variables are used for sensitive configuration.
+
+Future Improvements
+
+- Production deployment.
+- Enhanced mobile responsiveness.
+- Additional enterprise collaboration features.
+- Further AI-powered meeting assistance.
+
+Author
+
+Ananthu R S
+
+GitHub: https://github.com/Ananthu-R-S
+
+LinkedIn: https://linkedin.com/in/ananthu-r-s-462060319
