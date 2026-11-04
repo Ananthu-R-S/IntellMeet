@@ -201,13 +201,10 @@ export default function TeamWorkspace() {
       setSuccess("");
 
      await api.post(
-      "/workspaces",
-      {
-        name: workspaceName.trim(),
-        description: description.trim(),
-      },
-      { headers: authHeaders }
-    );
+  `/workspaces/${workspaceId}/members`,
+  { email },
+  { headers: authHeaders }
+);
 
       setMemberEmails((previous) => ({
         ...previous,
